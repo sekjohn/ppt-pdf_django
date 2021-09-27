@@ -27,6 +27,7 @@ def PPTtoPDF(inputFileName, outputFileName):
         powerpoint.Quit()
     CoUninitialize()
 
+    
 @api_view(["POST"])
 def conversion_main(request):
     file_src = json.loads(request.body)
@@ -35,12 +36,9 @@ def conversion_main(request):
     if not os.path.exists(uploadPath):
         os.makedirs(uploadPath)
     
-
     try:
-        
         if file_src:
-
-
+            
             FileName = str(file_src['src_path']).replace('src/','').replace('.pptx','')
             outputFileName = f"{uploadPath}{FileName}.pdf"
             inputFileName = f"{uploadPath}{FileName}.pptx"
